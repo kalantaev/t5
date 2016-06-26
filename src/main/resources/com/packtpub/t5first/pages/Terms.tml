@@ -1,0 +1,8 @@
+<html t:type="border" title="About t5first"  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd"
+      xmlns:p="tapestry:parameter">
+
+
+<p>Miscellaneous terms and conditions can be found
+    here.</p>
+
+</html>
