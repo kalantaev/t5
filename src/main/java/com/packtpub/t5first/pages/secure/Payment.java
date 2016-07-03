@@ -26,64 +26,55 @@ public class Payment {
     private PersistentLocale persistentLocale;
     @Persist
     private String localeLabel;
-    public String getLocaleLabel()
-    {
-        if (localeLabel == null)
-        {
-            if (currentLocale.equals(Locale.GERMAN))
-            {
+
+    public String getLocaleLabel() {
+        if (localeLabel == null) {
+            if (currentLocale.equals(Locale.GERMAN)) {
                 localeLabel = new Locale("en").getDisplayName(Locale.ENGLISH);
-            }
-            else
-            {
+            } else {
                 localeLabel = new Locale("de").getDisplayName(Locale.GERMAN);
             }
-        }  return localeLabel;
-    }
-    @OnEvent(component="switchlocale")
-    void changeLocale()
-    {
-        localeLabel = currentLocale.getDisplayName(currentLocale);
-        if (currentLocale.equals(Locale.GERMAN))
-        {
-            persistentLocale.set(Locale.ENGLISH);
         }
-        else
-        {
+        return localeLabel;
+    }
+
+    @OnEvent(component = "switchlocale")
+    void changeLocale() {
+        localeLabel = currentLocale.getDisplayName(currentLocale);
+        if (currentLocale.equals(Locale.GERMAN)) {
+            persistentLocale.set(Locale.ENGLISH);
+        } else {
             persistentLocale.set(Locale.GERMAN);
         }
     }
 
-    Object onSubmitFromLoginForm()
-    {
+    Object onSubmitFromLoginForm() {
         Class nextPage = null;
         User authenticatedUser = null;
         authenticatedUser =
                 Security.authenticate(userName, password);
-        if (authenticatedUser != null)
-        {
+        if (authenticatedUser != null) {
             user = authenticatedUser;
             nextPage = ShowAll.class;
-        }
-        else
-        {
+        } else {
             nextPage = Registration.class;
         }
         return nextPage;
     }
-    public String getUserName()
-    {
+
+    public String getUserName() {
         return userName;
     }
-    public void setUserName(String userName)
-    {
-        this.userName = userName;  }
-    public String getPassword()
-    {
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
         return password;
     }
-    public void setPassword(String password)
-    {
+
+    public void setPassword(String password) {
         this.password = password;
     }
 }

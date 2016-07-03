@@ -16,7 +16,9 @@ public class Celebrity {
     private String lastName;
     private Date dateOfBirth;
     private Occupation occupation;
+    @NonVisual
     private String biography;
+    @NonVisual
     private boolean birthDateVerified;
     @Inject
     public Celebrity() {

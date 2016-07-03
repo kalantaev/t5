@@ -14,9 +14,10 @@ public class MockDataSource implements IDataSource {
     private List<Celebrity> celebrities = new ArrayList<Celebrity>();
     public MockDataSource()
     {
-        addCelebrity(new Celebrity("Britney", "Spearce",
+        for (int i = 0; i<1000000; i++){
+        addCelebrity(new Celebrity("Britney #"+i, "Spearce #"+i,
                 Formats.parseDate("12/02/1981"),
-                Occupation.SINGER));
+                Occupation.SINGER));}
         addCelebrity(new Celebrity("Bill", "Clinton",
                 Formats.parseDate("08/19/1946"),
                 Occupation.POLITICIAN));

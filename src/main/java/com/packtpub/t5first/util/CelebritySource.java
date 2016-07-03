@@ -26,20 +26,23 @@ public class CelebritySource implements GridDataSource {
     }
 
     @Override
-    public void prepare(int indexFrom, int indexTo, List<SortConstraint> list) {
-
-
-        selection = dataSource.getRange(indexFrom, indexTo);
-        this.indexFrom = indexFrom;
+    public void prepare(int startIndex, int endIndex, List<SortConstraint> sortConstraints) {
+        System.out.println("Preparing selection.");
+        System.out.println("Index from " + startIndex + " to " + endIndex);
+        System.out.println(sortConstraints.get(0).getColumnSort());
+        System.out.println(sortConstraints.get(0).getPropertyModel().getPropertyName());
+        selection = dataSource.getRange(startIndex, endIndex);
+        this.indexFrom = startIndex;
     }
+
+
+
 
     public void prepare(int indexFrom, int indexTo,
                         PropertyModel propertyModel, boolean ascending) {
-        System.out.println("Preparing selection.");
-        System.out.println("Index from " + indexFrom + " to " + indexTo);
+
         String propertyName = propertyModel == null ? null : propertyModel.getPropertyName();
-        System.out.println("Property name is: " + propertyName);
-        System.out.println("Sorting order ascending: " + ascending);
+
         selection = dataSource.getRange(indexFrom, indexTo);
         this.indexFrom = indexFrom;
     }
